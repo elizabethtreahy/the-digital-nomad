@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get "/articles", to: "articles#get_articles"
   resources :favorites
   resources :articles
   resources :users

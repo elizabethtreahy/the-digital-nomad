@@ -61,3 +61,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rest-client", "~> 2.1"
+
+gem 'figaro'
+
+gem "net-http", "~> 0.2.2"
