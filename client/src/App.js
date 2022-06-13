@@ -1,25 +1,69 @@
-import logo from './logo.svg';
+
 import './App.css';
-// import Login from './Login'
+import Login from './Login'
 import { useEffect, useState } from "react"
+import User from "./User"
+import Signup from "./Signup"
+import { Route, Switch, useHistory } from 'react-router-dom'
+import Home from "./Home"
+import NavBar from './NavBar';
+import Articles from './Articles';
 
 function App() {
-  const [data, setData] = useState()
-  useEffect(() => {
-    fetch('./articles')
-    .then(resp => resp.json())
-    .then(x => setData(x))
 
-  }, [])
-  console.log('data', data)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [error, setError] = useState()
+  const history = useHistory()
+
+  
+  // console.log('data', data)
+
+  // useEffect(() => {
+  //   fetch("/auth")
+  //     .then(resp => {
+  //       if (resp.ok) {
+  //         resp.json().then(user => {
+  //           setCurrentUser(user)
+  //         })
+  //       }
+  //     })
+  // }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h1>THE DIGITAL NOMAD</h1>
-      </header>
-    </div>
-  );
-}
+    <div>
+      <div>
+      <NavBar></NavBar>
 
-export default App;
+      </div>
+      
+    <Switch>
+
+      <Route exact path="/">
+        <Home
+        setCurrentUser={setCurrentUser}
+        currentUser={currentUser}/>
+      </Route>
+
+      <Route exact path="/login">
+        <Login
+          setCurrentUser={setCurrentUser}
+          currentUser={currentUser}
+        />
+      </Route>
+
+      <Route exact path="/signup">
+        <Signup
+          setCurrentUser={setCurrentUser} />
+      </Route>
+      <Route exact path="/articles">
+        <Articles/>
+          
+      </Route>
+
+    </Switch>
+  
+  </div>
+  )}
+
+export default App

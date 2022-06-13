@@ -66,3 +66,6 @@ gem "rest-client", "~> 2.1"
 gem 'figaro'
 
 gem "net-http", "~> 0.2.2"
+
+gem 'bcrypt'
+gem 'rack-cors'
