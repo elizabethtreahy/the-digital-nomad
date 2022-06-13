@@ -1,16 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 // import Login from './Login'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
-
+  const [data, setData] = useState()
   useEffect(() => {
     fetch('./articles')
     .then(resp => resp.json())
-    .then(console.log)
+    .then(x => setData(x))
 
   }, [])
+  console.log('data', data)
   return (
     <div className="App">
       <header className="App-header">
