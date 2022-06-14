@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ArticlePreview from "./ArticlePreview";
+import SearchBar from "./SearchBar"
+
 function Articles(){
     const [articles, setArticles] = useState([])
     useEffect(() => {
@@ -14,13 +16,21 @@ function Articles(){
     <ArticlePreview article={article} />)
 
     return (
+        <>
         <div>
             Articles
+            </div>
+            <div>
+                Where are you going? Search by Country here.
+                <SearchBar setArticles={setArticles}/>
+            {/* searchbar setArticles = {set articles} */}
+            </div>
             <div> {renderArticles}
 
             </div>
+            </>
 
-        </div>
+    
     )
 
 }
