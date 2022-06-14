@@ -5,13 +5,14 @@ import Error from './Error'
 function Signup({ setCurrentUser }) {
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: ''
     })
 
     const history = useHistory()
-    const { name, email, password } = formData
+    const { firstName, lastName, email, password } = formData
 
     const handleChange = (e) => {
         const key = e.target.name
@@ -31,13 +32,12 @@ function Signup({ setCurrentUser }) {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-               
             },
             body: JSON.stringify({
-                firstName: "test",
-                lastName: "testytest",
-                email: "test@test.com",
-                password: "test1"
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: ''
             })
         })
     }
@@ -53,9 +53,9 @@ function Signup({ setCurrentUser }) {
                 <h1>Glad you're here.</h1>
                 <form onSubmit={createUser}>
                     First Name:
-                    <input onChange={handleChange} value={name} name="name" type="text" />
+                    <input onChange={handleChange} value={firstName} name="name" type="text" />
                     Last Name:
-                    <input onChange={handleChange} value={name} name="name" type="text" />
+                    <input onChange={handleChange} value={lastName} name="name" type="text" />
                     Email:
                     <input onChange={handleChange} value={email} name="email" type="email" />
                     Password:

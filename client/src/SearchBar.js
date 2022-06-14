@@ -10,7 +10,7 @@ const SearchBar = ({ setArticles }) => {
     // }, [])
 
     const countries = [
-        { name: "France", countryCode: "fr" },
+        
         { name: "United Arab Emirates", countryCode: "ae" },
         { name: "Argentina", countryCode: "ar" },
         { name: "Austria", countryCode: "at" },
@@ -26,8 +26,47 @@ const SearchBar = ({ setArticles }) => {
         { name: "Czechia", countryCode: "cz" },
         { name: "Germany", countryCode: "de" },
         { name: "Egypt", countryCode: "eg" },
-
+        { name: "France", countryCode: "fr" },
+        { name: "United Kingdom", countryCode: "gb" },
+        { name: "Greece", countryCode: "gr" },
+        { name: "Hong Kong", countryCode: "hk" },
+        { name: "Hungary", countryCode: "hu" },
+        { name: "Indonesia", countryCode: "id" },
+        { name: "Ireland", countryCode: "ie" },
+        { name: "Israel", countryCode: "il" },
+        { name: "India", countryCode: "in" },
+        { name: "Italy", countryCode: "it" },
+        { name: "Japan", countryCode: "jp" },
+        { name: "South Korea", countryCode: "kr" },
+        { name: "Lithuania", countryCode: "lt" },
+        { name: "Latvia", countryCode: "lv" },
+        { name: "Morocco", countryCode: "ma" },
+        { name: "Mexico", countryCode: "mx" },
+        { name: "Malaysia", countryCode: "my" },
+        { name: "Nigeria", countryCode: "ng" },
+        { name: "Netherlands", countryCode: "nl" },
+        { name: "Norway", countryCode: "no" },
+        { name: "New Zealand", countryCode: "nz" },
+        { name: "Philippines", countryCode: "ph" },
+        { name: "Poland", countryCode: "pl" },
+        { name: "Portugal", countryCode: "pt" },
+        { name: "Romania", countryCode: "ro" },
+        { name: "Serbia", countryCode: "rs" },
+        { name: "Russia", countryCode: "ru" },
+        { name: "South Africa", countryCode: "sa" },
+        { name: "Sweden", countryCode: "se" },
+        { name: "Singapore", countryCode: "sg" },
+        { name: "Slovenia", countryCode: "si" },
+        { name: "Slovakia", countryCode: "sk" },
+        { name: "Thailand", countryCode: "th" },
+        { name: "Turkey", countryCode: "tr" },
+        { name: "Taiwan", countryCode: "tw" },
+        { name: "Ukraine", countryCode: "ua" },
+        { name: "United States", countryCode: "us" },
+        { name: "Venezuela", countryCode: "ve" },
+        {name: "South Africa", countryCode: "za" }
     ];
+    
     const handleChange = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
