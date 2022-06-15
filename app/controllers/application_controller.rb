@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   before_action :authorized
 
+  # def current_user
+  #   User.find_by(id: session[:user_id])
+  # end
+
+  # def logged_in?
+  #   !!current_user
+  # end
+
+  # def require_login
+  #   redirect_to "/login" unless logged_in?
+  # end
+
+  # helper_method :current_user, :logged_in?, :require_login
+
     
   private
 

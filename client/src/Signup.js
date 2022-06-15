@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Error from './Error'
 
+
 function Signup({ setCurrentUser }) {
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
@@ -21,27 +22,34 @@ function Signup({ setCurrentUser }) {
             ...formData,
             [key]: e.target.value
         })
+        console.log(formData, "wtf")
     }
+    
 
 
     const createUser = (e) => {
         e.preventDefault();
 
-     
         fetch("/signup", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: ''
+                first_name: formData.firstName,
+                last_name: formData.lastName,
+                email: formData.email,
+                password: formData.password
             })
-        })
+            
+        }).then((r) => r.json())
+        // .then(user => {
+        //     console.log(user, "user")
+        //     setCurrentUser(user) 
+        //     history.push('./articles')})
+          
     }
-    // console.log(formData)
+
 
 
     return (
@@ -53,9 +61,9 @@ function Signup({ setCurrentUser }) {
                 <h1>Glad you're here.</h1>
                 <form onSubmit={createUser}>
                     First Name:
-                    <input onChange={handleChange} value={firstName} name="name" type="text" />
+                    <input onChange={handleChange} value={firstName} name="firstName" type="text" />
                     Last Name:
-                    <input onChange={handleChange} value={lastName} name="name" type="text" />
+                    <input onChange={handleChange} value={lastName} name="lastName" type="text" />
                     Email:
                     <input onChange={handleChange} value={email} name="email" type="email" />
                     Password:

@@ -8,13 +8,20 @@ class UsersController < ApplicationController
     end
 
     def create 
-        render json: User.create!(user_params), status: :created
+        user = User.create!(user_params), 
+        if user
+            session[:user_id] = user_id
+            render json: {status: :created, user: :user}
+        else
+            render json: {status: 500}
+        end
     end
 
     def update
         current_user = find_user
         current_user.update!(user_params)
-        render json: current_user, status: :ok
+        render json: request.body
+        # render json: current_user status: :ok
     end
 
     def destroy 

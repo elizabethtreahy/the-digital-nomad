@@ -22,9 +22,10 @@ function User({ currentUser, setCurrentUser }) {
         <>
             <div>
                 <h1 style={{fontSize: 'xx-large'}}>Your Details</h1>
-                <h3>Name: {currentUser && currentUser.name}</h3>
+                <h3>Name: {currentUser && currentUser.firstName}</h3>
                 <h3>Email: {currentUser && currentUser.email}</h3>
-                <button onClick={redirectToEditForm}>Update</button><button onClick={deleteUser}>Delete</button>
+                <button onClick={redirectToEditForm}>Update</button>
+                <button onClick={deleteUser}>Delete</button>
             </div>
         </>
     )

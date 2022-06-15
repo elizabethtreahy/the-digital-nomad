@@ -8,6 +8,7 @@ import { Route, Switch, useHistory } from 'react-router-dom'
 import Home from "./Home"
 import NavBar from './NavBar';
 import Articles from './Articles';
+import EditProfile from './EditProfile'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   const [error, setError] = useState()
   const history = useHistory()
 
-  
+
   // console.log('data', data)
 
   // useEffect(() => {
@@ -33,37 +34,45 @@ function App() {
   return (
     <div>
       <div>
-      <NavBar></NavBar>
+        <NavBar></NavBar>
 
       </div>
-      
-    <Switch>
 
-      <Route exact path="/">
-        <Home
-        setCurrentUser={setCurrentUser}
-        currentUser={currentUser}/>
-      </Route>
+      <Switch>
 
-      <Route exact path="/login">
-        <Login
-          setCurrentUser={setCurrentUser}
-          currentUser={currentUser}
-        />
-      </Route>
+        <Route exact path="/">
+          <Home
+            currentUser={currentUser} />
+        </Route>
 
-      <Route exact path="/signup">
-        <Signup
-          setCurrentUser={setCurrentUser} />
-      </Route>
-      <Route exact path="/articles">
-        <Articles/>
-          
-      </Route>
+        <Route exact path="/login">
+          <Login
+            setCurrentUser={setCurrentUser} />
+        </Route>
 
-    </Switch>
-  
-  </div>
-  )}
+        <Route exact path="/signup">
+          <Signup
+            setCurrentUser={setCurrentUser} />
+        </Route>
+
+        <Route exact path="/articles">
+          <Articles
+            currentUser={currentUser} />
+        </Route>
+        
+        <Route exact path="/user">
+          <User 
+            currentUser={currentUser}/>
+        </Route>
+
+        <Route exact path="/editprofile">
+          <EditProfile
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser} />
+        </Route>
+      </Switch>
+    </div>
+  )
+}
 
 export default App

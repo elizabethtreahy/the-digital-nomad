@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 // import styled from "styled-components"
+import { useHistory } from "react-router-dom"
 
 
 
 
 function NavBar({ currentUser, setCurrentUser }) {
+    const history = useHistory()
 
     const handleSignInAlert = () => {
         alert("You must be logged in to access this page! Redirecting to sign up now...")
@@ -16,59 +18,79 @@ function NavBar({ currentUser, setCurrentUser }) {
             method: "DELETE"
         })
             .then(r => r.json())
-            .then(setCurrentUser())
+            .then(() => {
+                setCurrentUser()
+                history.push('./articles')
+            })
+
     }
 
     return (
         <div>
-            {currentUser ?
+            {/* {currentUser ?
                 // NavBar for User that is logged in
                 (
                     <>
                         <NavLink
                             exact to="/"
-                            // activeStyle={active}
+                        // activeStyle={active}
                         >
                             Hey {currentUser.name}!
-                        </NavLink><NavLink
+                        </NavLink>
+                        <NavLink
                             exact to="/favorite"
-                            // activeStyle={active}
+                        // activeStyle={active}
                         >
                             Your Articles
                         </NavLink>
-                        <NavLink style={{ fontSize: '18px' }} exact to="/" onClick={handleLogout}>
+                        <NavLink exact to="editprofile"
+                        >
+                            Edit Profile
+
+                        </NavLink>
+                        <NavLink exact to="/" onClick={handleLogout}>
                             Logout
                         </NavLink>
-                        </>
+                    </>
 
                 ) :
-                (
-                  <>
-                  <NavLink
+                ( */}
+                    <>
+                        <NavLink
                             exact to="/">
-                                Home
-                            </NavLink>
+                            Home
+                        </NavLink>
                         <NavLink
                             exact to="/articles"
-                            // activeStyle={active}
+                        // activeStyle={active}
                         >
                             Let's Travel
                         </NavLink>
-                        <NavLink
-                            onClick={handleSignInAlert}
-                            exact to="/signup"
+                        {/* <NavLink
+                            // onClick={handleSignInAlert}
+                            exact to="/favorite"
                         >
                             My Favorites
-                        </NavLink>
-                        <NavLink
-                            onClick={handleSignInAlert}
-                            exact to="/signup"
-                        >
+                        </NavLink> */}
+                        <NavLink exact to="/user">
                             My Details
+
                         </NavLink>
-                        </>
-                    
-                )}
+
+                        <NavLink
+                            // onClick={handleSignInAlert}
+                            exact to="/editprofile"
+                        >
+                            Edit Profile
+                        </NavLink>
+                        <NavLink 
+                        exact to="/" 
+                        onClick={handleLogout}>
+                            Logout
+                        </NavLink>
+                    </>
+
+                {/* )} */}
         </div>
     )
 }

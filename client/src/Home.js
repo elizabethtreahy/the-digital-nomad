@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import Login from './Login'
 // import NavBar from './NavBar'
 
-function Home({ setCurrentUser, currentUser }) {
+function Home({  currentUser }) {
     const history = useHistory()
     const [data, setData] = useState()
     useEffect(() => {
