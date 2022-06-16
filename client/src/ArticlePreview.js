@@ -3,16 +3,11 @@ import React from "react"
 function ArticlePreview({ currentUser, article }) {
     const { author, title, description, url, published_at } = article;
     const handleClick = async () => {
-        const createdArticle = await createArticle()
-        // console.log('article', createdArticle)
-        // const createdFavorite = await createFavorite(createdArticle)
-        // console.log('favorite', createdFavorite)
-        // return [createdArticle, createdFavorite]
-        // return createdArticle
+        await createArticle()
     }
 
     const createArticle = async () => {
-        const x = await fetch("./articles/save", {
+        return await fetch("./articles/save_and_favorite", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,42 +18,10 @@ function ArticlePreview({ currentUser, article }) {
                 description,
                 url,
                 published_at,
+                user_id: currentUser.id
             })
         })
-        console.log('x', x)
-        return x
     }
-    // const createFavorite = async (createdArticle) => {
-    //     console.log('created', createdArticle.json())
-    //     const favoriteObj = {
-    //         article_id: 2,
-    //         user_id: 2,
-    //     }
-    //     const y =  await fetch("./favorite", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(favoriteObj)
-    //     })
-    //     // console.log('y', y)
-    //     return y
-    // }
-
-    // // .then((data) => {
-    // //     console.log('favorite', data.article.id, currentUser)
-    // //     const favoriteObj = {
-    // //         article_id: data.article?.id,
-    // //         user_id: currentUser.id,
-    // //     }
-    // //     console.log('obj', favoriteObj)
-    // //     fetch("./favorite", {
-    // //         method: "POST",
-    // //         headers: {
-    // //             "Content-Type": "application/json"
-    // //         },
-    // //         body: JSON.stringify(favoriteObj)
-    //     })}
 
     return (
         <div>

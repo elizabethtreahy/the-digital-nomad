@@ -9,6 +9,7 @@ import Home from "./Home"
 import NavBar from './NavBar';
 import Articles from './Articles';
 import EditProfile from './EditProfile'
+import FavoriteArticles from './FavoriteArticles';
 
 function App() {
 
@@ -58,6 +59,11 @@ function App() {
         <Route exact path="/articles">
           <Articles
             currentUser={currentUser} />
+        </Route>
+
+        <Route exact path="/favoritearticles">
+          <FavoriteArticles 
+            currentUser={currentUser}/>
         </Route>
         
         <Route exact path="/user">

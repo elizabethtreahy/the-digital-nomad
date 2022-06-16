@@ -26,7 +26,7 @@ function NavBar({ currentUser, setCurrentUser }) {
     }
 
     return (
-        <div>
+        <div class="navbar">
             {/* {currentUser ?
                 // NavBar for User that is logged in
                 (
@@ -62,16 +62,14 @@ function NavBar({ currentUser, setCurrentUser }) {
                         </NavLink>
                         <NavLink
                             exact to="/articles"
-                        // activeStyle={active}
                         >
                             Let's Travel
                         </NavLink>
-                        {/* <NavLink
-                            // onClick={handleSignInAlert}
-                            exact to="/favorite"
+                        <NavLink
+                            exact to="/favoritearticles"
                         >
                             My Favorites
-                        </NavLink> */}
+                        </NavLink>
                         <NavLink exact to="/user">
                             My Details
 

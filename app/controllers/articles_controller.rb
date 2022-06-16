@@ -11,9 +11,18 @@ class ArticlesController < ApplicationController
         render json: response.body
         # render json: params[:countryCode]
     end
-    def create
+    def save_and_favorite
         article = Article.create!(article_params)
-        render json: {article: article, success: "Hey from Ar Tick les"}
+        if article
+            favorite = Favorite.create!(article_id: article[:id], user_id: favorite_params[:user_id])
+            if favorite
+                render json: {article: article, favorite: favorite, message: "Created an article and favorited 🌸", status: 200}
+            else
+                render json: {error: "Failed at favorite", status: 500}    
+            end
+        else
+            render json: {error: "Failed at article", status: 500}
+        end
     end
     def show
         article = Article.find_by(id: params[:id])
@@ -23,5 +32,8 @@ class ArticlesController < ApplicationController
     private
     def article_params
         params.permit(:author, :title, :description, :url, :published_at)
+    end
+    def favorite_params
+        params.permit(:article_id, :user_id)
     end
 end

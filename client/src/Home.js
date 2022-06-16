@@ -26,8 +26,10 @@ function Home({  currentUser }) {
                 <div className="App">
                     <header className="App-header">
                         <h1>THE DIGITAL NOMAD</h1>
+                        <div>
                         <button onClick={renderLoginPage}>Login</button>
                         <button onClick={renderSignUpPage}>Sign Up</button>
+                        </div>
                     </header>
                 </div>
             </div>
