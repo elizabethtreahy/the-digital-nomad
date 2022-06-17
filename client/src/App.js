@@ -13,7 +13,7 @@ import FavoriteArticles from './FavoriteArticles';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
   const [error, setError] = useState()
   const history = useHistory()
 

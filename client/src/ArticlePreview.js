@@ -2,6 +2,7 @@ import React from "react"
 
 function ArticlePreview({ currentUser, article }) {
     const { author, title, description, url, published_at } = article;
+    
     const handleClick = async () => {
         await createArticle()
     }
@@ -18,11 +19,12 @@ function ArticlePreview({ currentUser, article }) {
                 description,
                 url,
                 published_at,
-                user_id: currentUser.id
+                user_id: currentUser.id,
+                // id: article.id
             })
         })
     }
-
+// console.log(article, "hello article")
     return (
         <div>
             <h2>{author}</h2>

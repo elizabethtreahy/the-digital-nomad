@@ -45,20 +45,21 @@ function EditProfile({ currentUser, setCurrentUser }) {
         if (r.ok) {
           r.json().then(data => {
             console.log('currentUser', data.firstName)
-            setCurrentUser([{
+            setCurrentUser({
               id: currentUser.id,
               first_name: formData.firstName,
               last_name: formData.lastName,
               email: formData.email
-            }])
-            console.log('newUser', currentUser)
+            })
+            console.log('updatedUser right here', currentUser)
             setErrors([])
-            history.push('/articles')
+            history.push('/user')
           })
         } else {
           r.json().then(err => setErrors(err.errors))
         }
       })
+
   }
 
 

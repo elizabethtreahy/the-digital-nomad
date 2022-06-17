@@ -8,11 +8,8 @@ function FavoritePreview({ currentUser, article, handleRemoveFavorite }) {
         fetch(`./favorites/destroy?articleId=${article.id}`, {
             method: 'DELETE'
         })
-        handleRemoveFavorite(article)
-        
+        handleRemoveFavorite(article)   
     }
-
-
     return (
         <div>
             <h2>{author}</h2>
@@ -23,5 +20,4 @@ function FavoritePreview({ currentUser, article, handleRemoveFavorite }) {
         </div>
     )
 }
-
 export default FavoritePreview

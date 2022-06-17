@@ -6,7 +6,6 @@ function User({ currentUser, setCurrentUser }) {
 
     const history = useHistory()
     
-
     const deleteUser = () => {
         fetch(`./users/${currentUser.id}`, { method: 'DELETE' })
             .then(data => {
@@ -19,6 +18,7 @@ function User({ currentUser, setCurrentUser }) {
         history.push("/editprofile", currentUser)
     }
 
+    
     return (
         <>
             <div>

@@ -12,18 +12,46 @@ class ArticlesController < ApplicationController
         # render json: params[:countryCode]
     end
     def save_and_favorite
-        article = Article.create!(article_params)
-        if article
-            favorite = Favorite.create!(article_id: article[:id], user_id: favorite_params[:user_id])
-            if favorite
-                render json: {article: article, favorite: favorite, message: "Created an article and favorited 🌸", status: 200}
+        #check to see if article already exists in the database
+        #if not, create article
+        #if yes, article is readyyyyy
+        found_article = Article.find_by(title: params[:title])
+        if found_article
+            #the variable found is really an instance of article
+            found_favorite = Favorite.find_by(article_id: found_article[:id], user_id: favorite_params[:user_id])
+            if found_favorite
+                render json: {article: found_article, favorite: found_favorite, message: "Found an article and found a favorite 🌻", status: 200}    
             else
-                render json: {error: "Failed at favorite", status: 500}    
+                favorite = Favorite.create!(article_id: found_article[:id], user_id: favorite_params[:user_id])
+                render json: {article: found_article, favorite: found_favorite, message: "Found an article and created a favorite 🌹", status: 200}
             end
         else
-            render json: {error: "Failed at article", status: 500}
+            #there is no article, and we need to make one
+            article = Article.create!(article_params)
+            favorite = Favorite.create!(article_id: article[:id], user_id: favorite_params[:user_id])
+            render json: {article: article, favorite: favorite, message: "Created an article and created a favorite 🌸", status: 200}
         end
     end
+
+        #Article.find_by(title:)
+
+        #remember that the user is always in current_user
+
+
+
+
+    #     article = Article.create!(article_params)
+    #     if article
+    #         favorite = Favorite.create!(article_id: article[:id], user_id: favorite_params[:user_id])
+    #         if favorite
+    #             render json: {article: article, favorite: favorite, message: "Created an article and favorited 🌸", status: 200}
+    #         else
+    #             render json: {error: "Failed at favorite", status: 422}    
+    #         end
+    #     else
+    #         render json: {error: "Failed at article", status: 500}
+    #     end
+    # end
     def show
         article = Article.find_by(id: params[:id])
         render json: article, status: :ok
@@ -31,7 +59,7 @@ class ArticlesController < ApplicationController
 
     private
     def article_params
-        params.permit(:author, :title, :description, :url, :published_at)
+        params.permit(:author, :title, :description, :url, :published_at, :id)
     end
     def favorite_params
         params.permit(:article_id, :user_id)
