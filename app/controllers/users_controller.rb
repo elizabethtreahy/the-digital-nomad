@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def show
-        current_user = find_user
+        # current_user = find_user
         render json: current_user, status: :ok
     end
 
@@ -18,14 +18,14 @@ class UsersController < ApplicationController
     end
 
     def update
-        current_user = find_user
+        # current_user = find_user
         current_user.update!(user_params)
         render json: request.body
         # render json: current_user status: :ok
     end
 
     def destroy 
-        current_user = find_user
+        # current_user = find_user
         current_user.destroy
         head :no_content
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     private
 
     def find_user
-        user = User.find(session[:user_id])
+        User.find(session[:user_id])
     end
 
     def user_params

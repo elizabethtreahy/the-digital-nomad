@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 
-function FavoritePreview({ currentUser, article }) {
+function FavoritePreview({ currentUser, article, handleRemoveFavorite }) {
     const { author, title, description, url } = article
 
-    // const handleRemove = () => {
-    //     fetch(`/favorites/${currentUser.id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(r => r.json())
-    // }
+    const handleRemove = () => {
+        console.log("i am an article", article)
+        fetch(`./favorites/destroy?articleId=${article.id}`, {
+            method: 'DELETE'
+        })
+        handleRemoveFavorite(article)
+        
+    }
 
 
     return (
@@ -17,7 +19,7 @@ function FavoritePreview({ currentUser, article }) {
             <h2>{title}</h2>
             <h4>{description}</h4>
             <a href={`${url}`}>Link to Article</a>
-            {/* <button onClick={() => handleRemove()}>Remove</button> */}
+            <button onClick={() => handleRemove()}>Remove</button>
         </div>
     )
 }

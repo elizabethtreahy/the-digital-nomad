@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom"
 import Login from './Login'
 // import NavBar from './NavBar'
+import styles from "./styles"
 
 function Home({  currentUser }) {
     const history = useHistory()
@@ -19,7 +20,7 @@ function Home({  currentUser }) {
         history.push("/signup")
     }
     return (
-        <>
+        <div style={styles.main} >
         
             <div >
                 {/* {console.log('hey from home')} */}
@@ -33,7 +34,7 @@ function Home({  currentUser }) {
                     </header>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

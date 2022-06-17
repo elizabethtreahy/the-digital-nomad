@@ -26,70 +26,41 @@ function NavBar({ currentUser, setCurrentUser }) {
     }
 
     return (
-        <div class="navbar">
-            {/* {currentUser ?
-                // NavBar for User that is logged in
-                (
-                    <>
-                        <NavLink
-                            exact to="/"
-                        // activeStyle={active}
-                        >
-                            Hey {currentUser.name}!
-                        </NavLink>
-                        <NavLink
-                            exact to="/favorite"
-                        // activeStyle={active}
-                        >
-                            Your Articles
-                        </NavLink>
-                        <NavLink exact to="editprofile"
-                        >
-                            Edit Profile
+        <>
+            <div className="navbar">
+                <NavLink
+                    exact to="/">
+                    Home
+                </NavLink>
+                <NavLink
+                    exact to="/articles"
+                >
+                    Let's Travel
+                </NavLink>
+                <NavLink
+                    exact to="/favoritearticles"
+                >
+                    My Favorites
+                </NavLink>
+                <NavLink exact to="/user">
+                    My Details
 
-                        </NavLink>
-                        <NavLink exact to="/" onClick={handleLogout}>
-                            Logout
-                        </NavLink>
-                    </>
+                </NavLink>
 
-                ) :
-                ( */}
-                    <>
-                        <NavLink
-                            exact to="/">
-                            Home
-                        </NavLink>
-                        <NavLink
-                            exact to="/articles"
-                        >
-                            Let's Travel
-                        </NavLink>
-                        <NavLink
-                            exact to="/favoritearticles"
-                        >
-                            My Favorites
-                        </NavLink>
-                        <NavLink exact to="/user">
-                            My Details
+                <NavLink
+                    // onClick={handleSignInAlert}
+                    exact to="/editprofile"
+                >
+                    Edit Profile
+                </NavLink>
+                <NavLink
+                    exact to="/"
+                    onClick={handleLogout}>
+                    Logout
+                </NavLink>
 
-                        </NavLink>
-
-                        <NavLink
-                            // onClick={handleSignInAlert}
-                            exact to="/editprofile"
-                        >
-                            Edit Profile
-                        </NavLink>
-                        <NavLink 
-                        exact to="/" 
-                        onClick={handleLogout}>
-                            Logout
-                        </NavLink>
-                    </>
-
-                {/* )} */}
-        </div>
+            </div>
+        </>
     )
 }
 

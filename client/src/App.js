@@ -13,29 +13,33 @@ import FavoriteArticles from './FavoriteArticles';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState([])
   const [error, setError] = useState()
   const history = useHistory()
 
 
   // console.log('data', data)
 
-  // useEffect(() => {
-  //   fetch("/auth")
-  //     .then(resp => {
-  //       if (resp.ok) {
-  //         resp.json().then(user => {
-  //           setCurrentUser(user)
-  //         })
-  //       }
-  //     })
-  // }, [])
+  useEffect(() => {
+    fetch("/auth")
+      .then(resp => {
+        if (resp.ok) {
+          resp.json().then(user => {
+            setCurrentUser(user)
+          })
+        }
+      })
+  }, [])
+
+  
 
 
   return (
     <div>
       <div>
-        <NavBar></NavBar>
+        <NavBar setCurrentUser={setCurrentUser}>
+        
+        </NavBar>
 
       </div>
 

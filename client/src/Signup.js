@@ -22,14 +22,13 @@ function Signup({ setCurrentUser }) {
             ...formData,
             [key]: e.target.value
         })
-        console.log(formData, "wtf")
+        console.log(formData, "hi")
     }
     
 
 
     const createUser = (e) => {
         e.preventDefault();
-
         fetch("/signup", {
             method: 'POST',
             headers: {
@@ -43,10 +42,10 @@ function Signup({ setCurrentUser }) {
             })
             
         }).then((r) => r.json())
-        // .then(user => {
-        //     console.log(user, "user")
-        //     setCurrentUser(user) 
-        //     history.push('./articles')})
+        .then(user => {
+            console.log(user, "user")
+            setCurrentUser(user) 
+            history.push('./articles')})
           
     }
 

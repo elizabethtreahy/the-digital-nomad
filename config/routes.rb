@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   delete "/logout", to: "sessions#destroy"
   delete "/deleteaccount", to:"users#destroy"
+  delete "/favorites/destroy", to:"favorites#destroy"
   
   post "/favorite", to: "article#create"
   post "/articles/save_and_favorite", to: "articles#save_and_favorite"
