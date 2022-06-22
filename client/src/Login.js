@@ -49,10 +49,9 @@ function Login({ setCurrentUser }) {
     const renderError = <Error key={error}>{error}</Error>
 
     return (
-        <div>
-            {/* {/* {console.log('hey from login')} */}
-
-            <form onSubmit={loginUser}>
+        <div style={{height: "100%", width: "100%", backgroundColor: "E2EEE7"}}>
+            <h1 style={{textAlign: "center", paddingTop: "80px"}}>Sign into your account here.</h1>
+            <form style={{textAlign: "center", padding: "100px"}} onSubmit={loginUser}>
                 email:
                 <input onChange={handleChange} value={email} name="email" type="email" />
                 password:
@@ -63,5 +62,4 @@ function Login({ setCurrentUser }) {
         </div>
     )
 }
-
 export default Login

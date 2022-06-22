@@ -24,8 +24,6 @@ function Signup({ setCurrentUser }) {
         })
         console.log(formData, "hi")
     }
-    
-
 
     const createUser = (e) => {
         e.preventDefault();
@@ -45,20 +43,14 @@ function Signup({ setCurrentUser }) {
         .then(user => {
             console.log(user, "user")
             setCurrentUser(user) 
-            history.push('./articles')})
-          
+            history.push('./articles')})    
     }
-
-
 
     return (
         <>
-            {/* <div>
-            {console.log('hey from signup')}
-        </div> */}
             <div>
-                <h1>Glad you're here.</h1>
-                <form onSubmit={createUser}>
+                <h1 style={{textAlign: "center", paddingTop: "80px"}}>Glad you're here.</h1>
+                <form style={{textAlign: "center", padding: "100px"}} onSubmit={createUser}>
                     First Name:
                     <input onChange={handleChange} value={firstName} name="firstName" type="text" />
                     Last Name:
@@ -68,11 +60,9 @@ function Signup({ setCurrentUser }) {
                     Password:
                     <input onChange={handleChange} value={password} name="password" type="password" />
                     <input type="submit" />
-
                 </form>
             </div>
         </>
     )
 }
-
 export default Signup

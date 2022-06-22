@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
         found_article = Article.find_by(title: params[:title])
         if found_article
             #the variable found is really an instance of article
-            found_favorite = Favorite.find_by(article_id: found_article[:id], user_id: favorite_params[:user_id])
+            me = current_user
+            found_favorite = Favorite.find_by(article_id: found_article[:id], user_id: me.id)
             if found_favorite
                 render json: {article: found_article, favorite: found_favorite, message: "Found an article and found a favorite 🌻", status: 200}    
             else

@@ -12,27 +12,23 @@ function Articles({currentUser}){
     console.log('articles', articles)
     console.log(currentUser)
     const renderArticles = articles?.articles?.map((article) => 
-    // console.log(article))
-    <ArticlePreview currentUser={currentUser} article={article} />)
+ 
+    <ArticlePreview style={{textAlign: "center"}} currentUser={currentUser} article={article} />)
 
     return (
         <>
         <div>
-            
             </div>
             <div>
-                <h4>Where are you going? Search by Country here.</h4>
-                <SearchBar setArticles={setArticles}/>
+                <h1 style={{textAlign: "center", padding: "80px"}}>Where are you going? Search by Country here.</h1>
+                <SearchBar style={{textAlign: "center", padding: "100px"}} setArticles={setArticles}/>
             {/* searchbar setArticles = {set articles} */}
             </div>
-            <div> {renderArticles}
-
+            <div style={{textAlign: "center"}}> 
+                {renderArticles}
             </div>
             </>
-
-    
     )
 
 }
-
 export default Articles

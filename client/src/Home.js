@@ -3,39 +3,28 @@ import { useHistory } from "react-router-dom"
 import Login from './Login'
 // import NavBar from './NavBar'
 import styles from "./styles"
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
-function Home({  currentUser }) {
+function Home({ currentUser }) {
     const history = useHistory()
     const [data, setData] = useState()
     useEffect(() => {
         fetch('./articles')
-        .then(resp => resp.json())
-        .then(x => setData(x))
-    
-      }, [])
-    const renderLoginPage = () => {
-        history.push("/login")
-    }
-    const renderSignUpPage = () => {
-        history.push("/signup")
-    }
+            .then(resp => resp.json())
+            .then(x => setData(x))
+
+    }, [])
+    // const renderLoginPage = () => {
+    //     history.push("/login")
+    // }
+    // const renderSignUpPage = () => {
+    //     history.push("/signup")
+    // }
     return (
-        <div style={styles.main} >
-        
-            <div >
-                {/* {console.log('hey from home')} */}
-                <div className="App">
-                    <header className="App-header">
-                        <h1>THE DIGITAL NOMAD</h1>
-                        <div>
-                        <button onClick={renderLoginPage}>Login</button>
-                        <button onClick={renderSignUpPage}>Sign Up</button>
-                        </div>
-                    </header>
-                </div>
-            </div>
+        <div  style={styles.nomad}>
+            <div>THE DIGITAL NOMAD</div>
+
         </div>
     )
 }
-
 export default Home

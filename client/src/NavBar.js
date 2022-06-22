@@ -2,6 +2,9 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 // import styled from "styled-components"
 import { useHistory } from "react-router-dom"
+import styles from './styles'
+
+
 
 
 
@@ -26,42 +29,44 @@ function NavBar({ currentUser, setCurrentUser }) {
     }
 
     return (
-        <>
-            <div className="navbar">
-                <NavLink
+        <div syle={{position: "fixed", bottom: "0", width: "100%"}} >
+            <div >
+                <NavLink style={styles.navlink}
                     exact to="/">
                     Home
                 </NavLink>
-                <NavLink
-                    exact to="/articles"
-                >
+                <NavLink style={styles.navlink}
+                    exact to="/login">
+                    Login
+                </NavLink>
+                <NavLink style={styles.navlink}
+                    exact to="/signup">
+                    Sign Up
+                </NavLink>
+                <NavLink style={styles.navlink}
+                    exact to="/articles">
                     Let's Travel
                 </NavLink>
-                <NavLink
-                    exact to="/favoritearticles"
-                >
+                <NavLink style={styles.navlink}
+                    exact to="/favoritearticles">
                     My Favorites
                 </NavLink>
-                <NavLink exact to="/user">
+                <NavLink style={styles.navlink}
+                    exact to="/user">
                     My Details
-
                 </NavLink>
-
-                <NavLink
+                <NavLink style={styles.navlink}
                     // onClick={handleSignInAlert}
-                    exact to="/editprofile"
-                >
+                    exact to="/editprofile">
                     Edit Profile
                 </NavLink>
-                <NavLink
+                <NavLink style={styles.navlink}
                     exact to="/"
                     onClick={handleLogout}>
                     Logout
                 </NavLink>
-
             </div>
-        </>
+        </div>
     )
 }
-
 export default NavBar

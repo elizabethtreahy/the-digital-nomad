@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom"
 
 function EditProfile({ currentUser, setCurrentUser }) {
 
-  // let locate = useLocation()
-  // const currentUser = locate.state
-
   const [errors, setErrors] = useState([])
   const [formData, setFormData] = useState({
     firstName: currentUser.first_name,
@@ -62,12 +59,11 @@ function EditProfile({ currentUser, setCurrentUser }) {
 
   }
 
-
   return (
     <div>
-      <h2>Update your information here.</h2>
-      <form onSubmit={updateUser}>
-        First Name
+      <h2 style={{fontSize: 'xx-large', textAlign: "center", paddingTop: "80px"}}>Update your information here.</h2>
+      <form style={{textAlign: "center"}} onSubmit={updateUser}>
+        First Name: 
         <input
           name="firstName"
           type="text"
@@ -76,7 +72,7 @@ function EditProfile({ currentUser, setCurrentUser }) {
           onChange={(e) => handleInput(e)}
         />
         <br />
-        Last Name
+        Last Name: 
         <input
           name="lastName"
           type="text"
@@ -85,7 +81,7 @@ function EditProfile({ currentUser, setCurrentUser }) {
           onChange={(e) => handleInput(e)}
         />
         <br />
-        Email
+        Email: 
         <input
           name="email"
           type="email"
@@ -99,5 +95,4 @@ function EditProfile({ currentUser, setCurrentUser }) {
     </div>
   )
 }
-
 export default EditProfile
